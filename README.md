@@ -6,6 +6,10 @@ Welcome to Farmer's Friend, your go-to mobile app for revolutionizing agricultur
 
 In many rural areas, farmers struggle to maximize their crop profits due to crop diseases and a lack of access to essential resources. Farmer's Friend is here to bridge the gap, offering a comprehensive solution to enhance productivity, connect farmers with experts, and create a thriving agricultural community.
 
+## What's the solution? 🌿
+
+Facing agricultural challenges? Farmer's Friend provides an all-in-one solution for farmers, from disease identification and market access to expert consultations and community support.
+
 ## Features
 
 ### Disease Identification and Solutions 🌿🤖
@@ -30,10 +34,15 @@ Join our vibrant community forum! Post your doubts, share experiences, and recei
 
 ## Tech Stack
 
-- **Framework:** Next.js
+<!-- - **Framework:** Next.js
 - **Mobile App Conversion:** Capacitor
 - **Disease Identification:** Gemini API
-- **Communication:** Vonage Communication APIs
+- **Communication:** Vonage Communication APIs -->
+
+<!-- ![Next.js](https://img.shields.io/badge/Next.js-%23000000.svg?&style=for-the-badge&logo=next.js&logoColor=white) -->
+![Capacitor](https://img.shields.io/badge/Capacitor-%23424242.svg?&style=for-the-badge&logo=capacitor&logoColor=white)
+![Gemini API](https://img.shields.io/badge/Gemini%20API-%2300ADEF.svg?&style=for-the-badge&logoColor=white)
+![Vonage](https://img.shields.io/badge/Vonage-%230056D2.svg?&style=for-the-badge&logo=vonage&logoColor=white)
 
 ## Getting Started
 
@@ -58,3 +67,19 @@ Throughout the development process, we encountered significant challenges:
 - Mobile App Conversion: Converting our Next.js code to a mobile app using Capacitor demanded considerable time and effort. We overcame hurdles in ensuring a seamless transition between web and mobile platforms.
 
 - API Integration: Working with Vonage and Gemini APIs presented real hassles, requiring thorough understanding and troubleshooting. We learned valuable lessons in handling API complexities and enhancing system reliability.
+
+## Live Demo
+
+
+## Screenshots
+
+
+## The Team Behind It
+
+- [Arvind Parekh](https://twitter.com/ArvindParekh_21)
+- [Viwshwa]()
+- [Shubham Shah]()
+- [Femil Savaliya]()
+
+## Future Potential/Improvements
+
