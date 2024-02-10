@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { AssemblyAI } from 'assemblyai'
 export const CameraComponent = () => {
   const [result, setResult] = useState('');
   const [imagePreview, setImagePreview] = useState('');
@@ -23,7 +24,7 @@ export const CameraComponent = () => {
     formData.append('file', file);
     formData.append('upload_preset', 'vcyhizgs');
 
-    // Cloudinary upload URL for your account
+   
     const uploadUrl = `https://api.cloudinary.com/v1_1/dsjkch2eh/image/upload/`;
 
     try {
@@ -41,7 +42,7 @@ export const CameraComponent = () => {
       console.log(cloudinaryResult)
       setUrl(cloudinaryResult.secure_url)
 
-      // Now send the Cloudinary URL to your server
+
       const serverResponse = await fetch(' https://b932-14-194-211-58.ngrok-free.app/process-image', {
         method: 'POST',
         headers: {
