@@ -1,38 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Farmer's Friend Mobile App 🌾📱
+
+Welcome to Farmer's Friend, your go-to mobile app for revolutionizing agriculture! 🚀
+
+## About
+
+In many rural areas, farmers struggle to maximize their crop profits due to crop diseases and a lack of access to essential resources. Farmer's Friend is here to bridge the gap, offering a comprehensive solution to enhance productivity, connect farmers with experts, and create a thriving agricultural community.
+
+## What's the solution? 🌿
+
+Facing agricultural challenges? Farmer's Friend provides an all-in-one solution for farmers, from disease identification and market access to expert consultations and community support.
+
+## Features
+
+### Disease Identification and Solutions 🌿🤖
+
+Easily identify crop diseases by snapping a picture, providing additional details, and receiving instant suggestions on disease information and recommended pesticides. Powered by the Gemini API, our cutting-edge technology ensures quick and accurate assistance.
+
+### Marketplace 🛒💹
+
+Unlock a world of possibilities in our integrated marketplace. Farmers can buy affordable pesticides, crops, rent machines, and hire workers—all in one place, streamlining the agricultural supply chain.
+
+### Call an Expert 📞👩‍🌾
+
+Connect with agricultural experts via video calls using the Vonage Communication APIs. Seek personalized advice, discuss problems, and explore strategies to boost productivity. Real-time solutions for real-world challenges.
+
+### Dashboard with Weather Insights ☁️📊
+
+Stay informed with a dedicated dashboard providing crucial weather data. Plan your harvest efficiently by keeping track of rain schedules. Additionally, access the latest government schemes aimed at benefiting farmers, sourced through scraping or APIs.
+
+### Community Forum 👩‍🌾🤝👨‍🌾
+
+Join our vibrant community forum! Post your doubts, share experiences, and receive valuable feedback from fellow farmers. Foster collaboration and knowledge exchange to empower every farmer in the community.
+
+## Tech Stack
+
+<!-- - **Framework:** Next.js
+- **Mobile App Conversion:** Capacitor
+- **Disease Identification:** Gemini API
+- **Communication:** Vonage Communication APIs -->
+
+<!-- ![Next.js](https://img.shields.io/badge/Next.js-%23000000.svg?&style=for-the-badge&logo=next.js&logoColor=white) -->
+![Capacitor](https://img.shields.io/badge/Capacitor-%23424242.svg?&style=for-the-badge&logo=capacitor&logoColor=white)
+![Gemini API](https://img.shields.io/badge/Gemini%20API-%2300ADEF.svg?&style=for-the-badge&logoColor=white)
+![Vonage](https://img.shields.io/badge/Vonage-%230056D2.svg?&style=for-the-badge&logo=vonage&logoColor=white)
 
 ## Getting Started
 
-First, run the development server:
+To get started with Farmer's Friend, follow these steps:
+
+1. Clone the repository
+2. Install dependencies
+3. Set up your API keys for Gemini and Vonage
+4. Run the app
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/farmers-friend.git
+cd farmers-friend
+npm install
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Learnings 🌿
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Throughout the development process, we encountered significant challenges:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Mobile App Conversion: Converting our Next.js code to a mobile app using Capacitor demanded considerable time and effort. We overcame hurdles in ensuring a seamless transition between web and mobile platforms.
 
-## Learn More
+- API Integration: Working with Vonage and Gemini APIs presented real hassles, requiring thorough understanding and troubleshooting. We learned valuable lessons in handling API complexities and enhancing system reliability.
 
-To learn more about Next.js, take a look at the following resources:
+## Live Demo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Screenshots
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## The Team Behind It
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# The-Alchemists
-# Alchemists
+- [Arvind Parekh](https://twitter.com/ArvindParekh_21)
+- [Viwshwa]()
+- [Shubham Shah]()
+- [Femil Savaliya]()
+
+## Future Potential/Improvements
+

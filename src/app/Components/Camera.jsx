@@ -4,6 +4,7 @@ export const CameraComponent = () => {
   const [result, setResult] = useState('');
   const [imagePreview, setImagePreview] = useState('');
   const [url,setUrl]=useState('')
+  const [prompt,setPrompt]=useState('')
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (!file) {
@@ -48,7 +49,7 @@ export const CameraComponent = () => {
         },
         body: JSON.stringify({
           imageUrl: cloudinaryResult.secure_url,
-          prompt: "What's in  the picture?",
+          prompt: prompt,
         }),
       });
 
@@ -68,6 +69,9 @@ export const CameraComponent = () => {
     <div>
       <input type="file" accept="image/jpeg,image/png" onChange={handleFileChange} />
       <button onClick={() => {}}>Upload Image</button> {/* The upload is handled by the file input change */}
+      <input className='border-2' value={prompt} onChange={(event)=>{
+        setPrompt(event.target.value)
+      }}></input>
       {imagePreview && <img src={imagePreview} alt="Preview" style={{ width: '100px', height: '100px' }} />}
       Url:{url}
       {result && <p>{result}</p>}
