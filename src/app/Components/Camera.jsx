@@ -8,7 +8,7 @@ export const CameraComponent = () => {
    const webcamRef = useRef(null);
    const [capturing, setCapturing] = useState(false);
    const [capturedImage, setCapturedImage] = useState(null);
-const [prompt,setPrompt]=useState('')
+   const [prompt, setPrompt] = useState("");
    const handleStartCapture = () => {
       setCapturing(true);
    };
@@ -17,6 +17,16 @@ const [prompt,setPrompt]=useState('')
    const genAI = new GoogleGenerativeAI(
       "AIzaSyAXHmtulh-E58AHJkGOL4hOjvSg6UPMsHU"
    );
+
+   const handleCapture = async () => {
+      const imageSrc = webcamRef.current.getScreenshot();
+      setCapturedImage(imageSrc);
+      const filename = "image.jpg";
+      const file = base64ToFile(imageSrc, filename);
+      
+      console.log(file);
+      run(file);
+   };
 
    // Converts a File object to a GoogleGenerativeAI.Part object.
    async function fileToGenerativePart(file) {
@@ -33,36 +43,24 @@ const [prompt,setPrompt]=useState('')
       };
    }
 
+
+
+   
+
    async function run(file) {
-    // For text-and-images input (multimodal), use the gemini-pro-vision model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
-  
-    
-  
-    // No need to select an input element since we have the file from the webcam capture
-    const imageParts = await fileToGenerativePart(file);
-  
-    const result = await model.generateContent([prompt, imageParts]);
-    const response = await result.response;
-    const text = response.text();
-    console.log(text);
-  }
-  
+      // For text-and-images input (multimodal), use the gemini-pro-vision model
+      const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+
+      // No need to select an input element since we have the file from the webcam capture
+      const imageParts = await fileToGenerativePart(file);
+
+      const result = await model.generateContent([prompt, imageParts]);
+      const response = await result.response;
+      const text = response.text();
+      console.log(text);
+   }
 
    //  run();
-
-   const handleStopCapture = () => {
-      setCapturing(false);
-   };
-
-   const handleCapture = async () => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    setCapturedImage(imageSrc);
-    const filename = "image.jpg";
-    const file = base64ToFile(imageSrc, filename);
-    await run(file); // Pass the File object directly to the run function
-  };
-  
 
    function base64ToFile(dataUrl, filename) {
       // Extract the base64 part and MIME type from the data URL
@@ -120,9 +118,13 @@ const [prompt,setPrompt]=useState('')
                facingMode: "user",
             }}
          />
-         <input className="border-2" value={prompt} onChange={(event)=>{
-setPrompt(event.target.value)
-         }}></input>
+         <input
+            className='border-2'
+            value={prompt}
+            onChange={(event) => {
+               setPrompt(event.target.value);
+            }}
+         ></input>
          {capturing ? (
             <>
                <button onClick={handleStopCapture}>Stop Capture</button>
@@ -142,3 +144,5 @@ setPrompt(event.target.value)
 };
 
 export default CameraComponent;
+
+

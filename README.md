@@ -77,7 +77,7 @@ Throughout the development process, we encountered significant challenges:
 ## The Team Behind It
 
 - [Arvind Parekh](https://twitter.com/ArvindParekh_21)
-- [Viwshwa]()
+- [Vishwa]()
 - [Shubham Shah]()
 - [Femil Savaliya]()
 

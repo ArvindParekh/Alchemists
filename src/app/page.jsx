@@ -5,5 +5,6 @@ import VideoRecorder, { CameraComponent } from "./Components/Camera";
 export default function Home() {
   return (
     <CameraComponent></CameraComponent>
+    // <Dashboard />
   );
 }
