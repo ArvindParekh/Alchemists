@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const CameraComponent = () => {
   const [result, setResult] = useState("");
@@ -67,30 +68,40 @@ export const CameraComponent = () => {
   };
 
   return (
-    <div className="p-4 min-h-screen flex justify-center items-center">
-      <div className="">
-        <div className="mb-2">
-          <input
-            type="file"
-            accept="image/jpeg,image/png"
-            onChange={handleFileChange}
-          />
-        </div>
-        <div>
-          <button onClick={() => {}}>Upload Image</button>{" "}
-          {/* The upload is handled by the file input change */}
-          {imagePreview && (
-            <img
-              src={imagePreview}
-              alt="Preview"
-              style={{ width: "100px", height: "100px" }}
+    <div className="">
+      <div className="p-5 text-green-500  shadow-sm">
+        <div> </div>
+        <h1 className=" text-[20px] text-center"> Scanner</h1>
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+      </div>
+      <div className="p-4 min-h-screen flex justify-center items-center">
+        <div className="">
+          <div className="mb-2">
+            <input
+              type="file"
+              accept="image/jpeg,image/png"
+              onChange={handleFileChange}
             />
-          )}
-          <div className="max-w-[calc(100vw-16px)] break-words flex flex-col gap-2 my-4">
-            <a href={url} target="_blank" className="break-words underline">
-              {url}
-            </a>
-            {result && <p className="font-medium">{result}</p>}
+          </div>
+          <div>
+            <button onClick={() => {}}>Upload Image</button>{" "}
+            {/* The upload is handled by the file input change */}
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt="Preview"
+                style={{ width: "100px", height: "100px" }}
+              />
+            )}
+            <div className="max-w-[calc(100vw-16px)] break-words flex flex-col gap-2 my-4">
+              <a href={url} target="_blank" className="break-words underline">
+                {url}
+              </a>
+              {result && <p className="font-medium">{result}</p>}
+            </div>
           </div>
         </div>
       </div>
