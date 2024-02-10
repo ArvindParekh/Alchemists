@@ -38,6 +38,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
+        <head>
+          <script
+            src="/assets/scripts/translation.js"
+            strategy="beforeInteractive"
+          />
+          {process.env.GOOGLE_TRANSLATION_CONFIG && (
+            <script
+              src="//translate.google.com/translate_a/element.js?cb=TranslateInit"
+              strategy="afterInteractive"
+            />
+          )}
+        </head>
         <main>{children}</main>
       </body>
     </html>

@@ -17,7 +17,17 @@ const nextConfig = {
   output: "export",
   swcMinify: true,
   reactStrictMode: true,
-  // ... other next.js config options
+  env: {
+    GOOGLE_TRANSLATION_CONFIG: JSON.stringify({
+      languages: [
+        { title: "English", name: "en" },
+        { title: "Hindi", name: "hi" },
+        { title: "Español", name: "es" },
+        { title: "Français", name: "fr" },
+      ],
+      defaultLanguage: "en",
+    }),
+  },
 };
 
 export default withPWA(nextConfig);
