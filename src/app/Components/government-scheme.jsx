@@ -1,19 +1,11 @@
-
-
-
-
-
-const GovernmentSchemes = ()=>{
-
-
-
-    return (
-        <>
-            <div className="w-[90%] border rounded-xl shadow-md h-[20%] mx-auto mt-10 -z-10 relative">
-                Government Schemes
-            </div>
-        </>
-    )
-}
+const GovernmentSchemes = () => {
+  return (
+    <>
+      <div className=" border rounded-sm shadow-sm h-[20%] mx-auto mt-10 -z-10 relative flex justify-center items-center">
+        Government Schemes
+      </div>
+    </>
+  );
+};
 
 export default GovernmentSchemes;
