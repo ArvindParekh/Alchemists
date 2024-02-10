@@ -11,30 +11,23 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   manifest: "/manifest.json",
-  applicationName: "Farmour",
-  title: {
-    default: "Farmour - Friend of Farmer",
-    template: "PWA Farmour - Friend of Farmer",
-  },
-  description: "Friend of Farmer",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Farmour - Friend of Farmer",
-    // startUpImage: [],
-  },
-  formatDetection: {
-    telephone: false,
-  },
-  openGraph: {
-    type: "website",
-    siteName: "Farmour - Friend of Farmer",
-    title: {
-      default: "Farmour - Friend of Farmer",
-      template: "PWA Farmour - Friend of Farmer",
-    },
-    description: "Friend of Farmer",
-  },
+  title: "Farmour - Friend of Farmer",
+  description: "",
+  // applicationName: "Farmour",
+  // title: {
+  //   default: "Farmour - Friend of Farmer",
+  //   template: "PWA Farmour - Friend of Farmer",
+  // },
+  // description: "Friend of Farmer",
+  // appleWebApp: {
+  //   capable: true,
+  //   statusBarStyle: "default",
+
+  //   // startUpImage: [],
+  // },
+  // formatDetection: {
+  //   telephone: false,
+  // },
 };
 
 export const viewport = {

@@ -1,13 +1,16 @@
 /** @type {import('next').NextConfig} */
-import withSerwistInit from "@serwist/next";
+import withPWAInit from "@ducanh2912/next-pwa";
 
-const withSerwist = withSerwistInit({
+const withPWA = withPWAInit({
+  dest: "public",
   cacheOnFrontEndNav: true,
-  swSrc: "src/sw.js", // add the path where you create sw.ts
-  swDest: "public/sw.js",
+  aggressiveFrontEndNavCaching: true,
   reloadOnOnline: true,
-  // disable: process.env.NODE_ENV === "development",
-  // ... other options
+  swcMinify: true,
+  disable: false,
+  workboxOptions: {
+    disableDevLogs: true,
+  },
 });
 
 const nextConfig = {
@@ -17,4 +20,4 @@ const nextConfig = {
   // ... other next.js config options
 };
 
-export default withSerwist(nextConfig);
+export default withPWA(nextConfig);
