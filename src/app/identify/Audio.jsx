@@ -61,7 +61,7 @@ export const Audio = ({onComplete}) => {
   };
   const sendAudioUrlToServer = async (audioUrl) => {
     try {
-      const response = await fetch('http://127.0.0.1:3000/audio', {
+      const response = await fetch('https://audioapi-o9je.onrender.com/audio', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

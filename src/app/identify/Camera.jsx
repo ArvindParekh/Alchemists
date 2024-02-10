@@ -58,7 +58,7 @@ export const CameraComponent = () => {
 
       // Optionally send the Cloudinary URL to your server along with the prompt
       // Adjust the URL to your server endpoint
-      const serverResponse = await fetch("http://localhost:3003/process-image", {
+      const serverResponse = await fetch(" https://9f64-14-194-211-58.ngrok-free.app/process-image", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
