@@ -1,8 +1,7 @@
-
-import create from 'zustand';
+import { create } from "zustand";
 
 export const useGlobalState = create((set) => ({
-  prompt: '',
+  prompt: "",
   setPrompt: (data) => set({ prompt: data }),
 }));
 
