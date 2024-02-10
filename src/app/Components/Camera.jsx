@@ -1,144 +1,78 @@
-"use client";
-
-import React, { useRef, useState } from "react";
-import Webcam from "react-webcam";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import React, { useState } from 'react';
 
 export const CameraComponent = () => {
-   const webcamRef = useRef(null);
-   const [capturing, setCapturing] = useState(false);
-   const [capturedImage, setCapturedImage] = useState(null);
-const [prompt,setPrompt]=useState('')
-   const handleStartCapture = () => {
-      setCapturing(true);
-   };
+  const [result, setResult] = useState('');
+  const [imagePreview, setImagePreview] = useState('');
+  const [url,setUrl]=useState('')
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      console.log('No file selected.');
+      return;
+    }
 
-   // Access your API key (see "Set up your API key" above)
-   const genAI = new GoogleGenerativeAI(
-      "AIzaSyAXHmtulh-E58AHJkGOL4hOjvSg6UPMsHU"
-   );
+    // Preview the selected image
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+    };
+    reader.readAsDataURL(file);
 
-   // Converts a File object to a GoogleGenerativeAI.Part object.
-   async function fileToGenerativePart(file) {
-      const base64EncodedDataPromise = new Promise((resolve) => {
-         const reader = new FileReader();
-         reader.onloadend = () => resolve(reader.result.split(",")[1]);
-         reader.readAsDataURL(file);
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'vcyhizgs');
+
+    // Cloudinary upload URL for your account
+    const uploadUrl = `https://api.cloudinary.com/v1_1/dsjkch2eh/image/upload/`;
+
+    try {
+      const cloudinaryResponse = await fetch(uploadUrl, {
+        method: 'POST',
+        body: formData,
+        
       });
-      return {
-         inlineData: {
-            data: await base64EncodedDataPromise,
-            mimeType: file.type,
-         },
-      };
-   }
 
-   async function run(file) {
-    // For text-and-images input (multimodal), use the gemini-pro-vision model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
-  
-    
-  
-    // No need to select an input element since we have the file from the webcam capture
-    const imageParts = await fileToGenerativePart(file);
-  
-    const result = await model.generateContent([prompt, imageParts]);
-    const response = await result.response;
-    const text = response.text();
-    console.log(text);
-  }
-  
+      if (!cloudinaryResponse.ok) {
+        throw new Error('Failed to upload image to Cloudinary');
+      }
 
-   //  run();
+      const cloudinaryResult = await cloudinaryResponse.json();
+      console.log(cloudinaryResult)
+      setUrl(cloudinaryResult.secure_url)
 
-   const handleStopCapture = () => {
-      setCapturing(false);
-   };
+      // Now send the Cloudinary URL to your server
+      const serverResponse = await fetch(' https://b932-14-194-211-58.ngrok-free.app/process-image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          imageUrl: cloudinaryResult.secure_url,
+          prompt: "What's in  the picture?",
+        }),
+      });
 
-   const handleCapture = async () => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    setCapturedImage(imageSrc);
-    const filename = "image.jpg";
-    const file = base64ToFile(imageSrc, filename);
-    await run(file); // Pass the File object directly to the run function
+      if (!serverResponse.ok) {
+        throw new Error('Failed to process image on the server');
+      }
+
+      const serverResult = await serverResponse.json();
+      setResult(JSON.stringify(serverResult));
+    } catch (error) {
+      console.error('Error:', error);
+      setResult('Error uploading or processing image');
+    }
   };
-  
 
-   function base64ToFile(dataUrl, filename) {
-      // Extract the base64 part and MIME type from the data URL
-      const arr = dataUrl.split(",");
-      const mime = arr[0].match(/:(.*?);/)[1];
-      const bstr = atob(arr[1]);
-
-      // Convert the base64 string to a byte array
-      let n = bstr.length;
-      const u8arr = new Uint8Array(n);
-      while (n--) {
-         u8arr[n] = bstr.charCodeAt(n);
-      }
-
-      // Create a File object from the byte array
-      const file = new File([u8arr], filename, { type: mime });
-      console.log(file);
-      return file;
-   }
-
-   const handleDownload = () => {
-      const blob = dataURItoBlob(capturedImage);
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "captured_photo.jpg";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-   };
-
-   // Convert Data URI to Blob
-   const dataURItoBlob = (dataURI) => {
-      const byteString = atob(dataURI.split(",")[1]);
-      const mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
-      const ab = new ArrayBuffer(byteString.length);
-      const ia = new Uint8Array(ab);
-
-      for (let i = 0; i < byteString.length; i++) {
-         ia[i] = byteString.charCodeAt(i);
-      }
-
-      return new Blob([ab], { type: mimeString });
-   };
-
-   return (
-      <div>
-         <Webcam
-            audio={false}
-            ref={webcamRef}
-            screenshotFormat='image/jpeg'
-            videoConstraints={{
-               width: 1280,
-               height: 720,
-               facingMode: "user",
-            }}
-         />
-         <input className="border-2" value={prompt} onChange={(event)=>{
-setPrompt(event.target.value)
-         }}></input>
-         {capturing ? (
-            <>
-               <button onClick={handleStopCapture}>Stop Capture</button>
-            </>
-         ) : (
-            <button onClick={handleCapture}>Capture</button>
-            // <button onClick={handleStartCapture}>Start Capture</button>
-         )}
-         {capturedImage && (
-            <>
-               <img src={capturedImage} alt='Captured' />
-               <button onClick={handleDownload}>Download Photo</button>
-            </>
-         )}
-      </div>
-   );
+  return (
+    <div>
+      <input type="file" accept="image/jpeg,image/png" onChange={handleFileChange} />
+      <button onClick={() => {}}>Upload Image</button> {/* The upload is handled by the file input change */}
+      {imagePreview && <img src={imagePreview} alt="Preview" style={{ width: '100px', height: '100px' }} />}
+      Url:{url}
+      {result && <p>{result}</p>}
+    </div>
+  );
 };
 
 export default CameraComponent;
