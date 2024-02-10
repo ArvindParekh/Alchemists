@@ -25,7 +25,7 @@ export default function WeatherInfo() {
   }, []);
 
   return (
-    <ResponsiveContainer width="90%" height={150} className={'mt-5'}>
+    <ResponsiveContainer width="90%" height={150} className={'mt-5 mb-10'}>
       <h1 className="font-semibold mb-5 ml-4">Daily Dew</h1>
       <BarChart data={data}>
         <XAxis
@@ -46,7 +46,7 @@ export default function WeatherInfo() {
           dataKey="total"
           fill="currentColor"
           radius={[4,   4,   0,   0]}
-          className="fill-primary"
+          className="fill-green-500"
         />
       </BarChart>
     </ResponsiveContainer>

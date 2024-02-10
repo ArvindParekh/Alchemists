@@ -9,4 +9,4 @@ export default function Home() {
     <Link href='/dashboard'>Get Started</Link>
     // <Dashboard />
   );
-}
+};
