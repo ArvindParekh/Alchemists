@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
 import { AssemblyAI } from 'assemblyai'
+const client = new AssemblyAI({
+  apiKey: "a4d0d19938c242e78f42410994617148"
+})
 export const CameraComponent = () => {
   const [result, setResult] = useState('');
   const [imagePreview, setImagePreview] = useState('');
