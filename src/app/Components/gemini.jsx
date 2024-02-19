@@ -4,7 +4,7 @@ const fs = require('fs');
 const FormData = require('form-data');
 
 // Replace with your actual API key
-const API_KEY = 'AIzaSyAXHmtulh-E58AHJkGOL4hOjvSg6UPMsHU';
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 async function downloadImage(url, path) {
   const response = await axios.get(url, { responseType: 'stream' });

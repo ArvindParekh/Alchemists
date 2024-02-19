@@ -10,13 +10,13 @@ import useGlobalState from "../Components/globalstate";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyB-vX_WudF4qGkdtUTpoZwW_iSdpjUkDRE",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "donorplate.firebaseapp.com",
     databaseURL: "https://donorplate-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "donorplate",
     storageBucket: "donorplate.appspot.com",
     messagingSenderId: "373333971918",
-    appId: "1:373333971918:web:d7044f9f83312cba2f919f",
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
     measurementId: "G-WBQ9WNMMP3"
   };
 // Initialize Firebase

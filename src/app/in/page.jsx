@@ -31,29 +31,13 @@ const TopCrops = () => {
   };
 
   const handleSubmit = async () => {
-    // Example API call
-    try {
-      console.log('Inside handleSubmit');
-      const response = await fetch('/api/your-endpoint', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ crops }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log('API response:', data);
-      // Handle successful API response here
-    } catch (error) {
-      console.error('Error sending data to API:', error);
-      // Handle errors here
-    }
+    // Convert crops array to a string representation suitable for query params
+    const cropsString = encodeURIComponent(JSON.stringify(crops));
+  
+    // Redirect to the dashboard page with crops data as query params
+    window.location.href = `/dashboard?crops=${cropsString}`;
   };
+  
 
   return (
     <div className="mx-5">
@@ -83,9 +67,9 @@ const TopCrops = () => {
         </div>
       ))}
 
-      <Link href='/dashboard' onClick={handleSubmit} className="bg-black rounded-lg outline-none border-none text-white font-medium p-2">
+      <button onClick={handleSubmit} className="bg-black rounded-lg outline-none border-none text-white font-medium p-2">
         Submit
-      </Link>
+      </button>
     </div>
   );
 };

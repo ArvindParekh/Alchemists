@@ -9,7 +9,7 @@ export default function WeatherInfo() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Ahmedabad?unitGroup=us&key=HX35G5W7ZCPNVLZSEJZ7FFGW5&contentType=json');
+        const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Ahmedabad?unitGroup=us&key=${import.meta.env.VITE_WEATHER_API_KEY}&contentType=json`);
         const fetchedData = await response.json();
         // Process the data to get daily precipitation
         const dailyRainfall = fetchedData.days.map((day) => ({
