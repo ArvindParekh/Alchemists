@@ -73,9 +73,33 @@ function Dashboard() {
                <Link href='/community'>
                   <FaPeopleRobbery />
                </Link>
-               <Link href='/expertChat'>
-                  <IoChatboxEllipses />
-               </Link>
+               <div
+            className=" cursor-pointer"
+            onClick={() => {
+              fetch("https://rest.nexmo.com/sms/json", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({
+                  from: "Farmour",
+                  text: "Hey there, Looking for a guidence here is my no: +918939894913",
+                  to: "917283820013",
+                  api_key: import.meta.env.VITE_VONAGE_API_KEY,
+                  api_secret: import.meta.env.VITE_VONAGE_API_SECRET,
+                }),
+              })
+                .then((response) => {
+                  alert("Sms sent successfully");
+                })
+                .catch((error) => {
+                  alert("Failed sending sms");
+                  console.log(error);
+                });
+            }}
+          >
+            <IoChatboxEllipses />
+          </div>
             </footer>
          </div>
       </main>
